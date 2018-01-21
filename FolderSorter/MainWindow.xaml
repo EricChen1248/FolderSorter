@@ -5,8 +5,120 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FolderSorter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" 
+        Height="635" 
+        Width="500" WindowStyle="None" Closed="Window_OnClose" ResizeMode="NoResize" BorderBrush="#FF313131" Background="#202020">
+    <Window.Resources>
+        <Style x:Key="BorderStyle" TargetType="Rectangle">
+            <EventSetter Event ="MouseLeftButtonDown" Handler="Border_MouseLeftButtonDown"/>
+            <EventSetter Event="MouseEnter" Handler="Border_OnMouseEnter"/>
+            <EventSetter Event="MouseLeave" Handler="Border_OnMouseLeave"></EventSetter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Rectangle x:Name="TitleBar" Fill="#FF202020" Margin="0" VerticalAlignment="Top" Height="30"/>
+
+        <Rectangle Stroke="{x:Null}" Fill="Transparent" VerticalAlignment="Top" Height="5" x:Name="TopBorder" Margin="5,0,5,0" Style="{StaticResource BorderStyle}"/>
+        <Rectangle Stroke="{x:Null}" Fill="Transparent" x:Name="BottomBorder" Height="5" VerticalAlignment="Bottom" Margin="5,0,5,0" Style="{StaticResource BorderStyle}"/>
+        <Rectangle Stroke="{x:Null}" Fill="Transparent" HorizontalAlignment="Left" Margin="0,5,0,5" Width="5" x:Name="LeftBorder" Style="{StaticResource BorderStyle}"/>
+        <Rectangle Stroke="{x:Null}" Fill="Transparent" Margin="0,5,0,5" Width="5" HorizontalAlignment="Right" x:Name="RightBorder"  Style="{StaticResource BorderStyle}"/>
+        <Rectangle Stroke="{x:Null}" Fill="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="5" Height="5" x:Name="BottomLeftCorner" Style="{StaticResource BorderStyle}" />
+        <Rectangle Stroke="{x:Null}" Fill="Transparent" VerticalAlignment="Bottom" Height="5" Width="5" HorizontalAlignment="Right" x:Name="BottomRightBorder" Style="{StaticResource BorderStyle}"/>
+        <Rectangle Stroke="{x:Null}" Fill="Transparent" HorizontalAlignment="Right" Width="5" Height="5" VerticalAlignment="Top" x:Name="TopRightBorder" Style="{StaticResource BorderStyle}"/>
+        <Rectangle Stroke="{x:Null}" Fill="Transparent" HorizontalAlignment="Left" Width="6" VerticalAlignment="Top" Height="5" x:Name="TopLeftBorder" Style="{StaticResource BorderStyle}"/>
+
+        <Button Grid.Row="0" x:Name="CloseBtn" HorizontalAlignment="Right" Height="30" Margin="0,0,0.038,0" Width="40" BorderBrush="{x:Null}" Foreground="{x:Null}" Click ="CloseBtn_OnClick" VerticalAlignment="Top" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources/CloseBtn.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="Resources/CloseBtn_Hover.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Row="0" x:Name="MaximizeBtn" HorizontalAlignment="Right" Height="30" Margin="0,0,40.038,0" Width="40" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="MaximizeBtn_OnClick" VerticalAlignment="Top">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources/MaximizeBtn.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="Resources/MaximizeBtn_Hover.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Row="0" x:Name="MinimizeBtn" HorizontalAlignment="Right" Height="30" Margin="0,0,80.038,0" Width="40" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="MinimizeBtn_OnClick" VerticalAlignment="Top" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources/Minimize.png"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="Resources/Minimize_Hover.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Stretch" Margin="0,35,0,0" VerticalAlignment="Stretch" Navigated="Frame_OnNavigated"/>
+        <Grid x:Name="RuleCreatorGrid" Visibility="Hidden" HorizontalAlignment="Stretch" Margin="0,35,0,0" VerticalAlignment="Stretch" Background="#14FFFFFF" >
+            <Frame x:Name="RuleCreatorFrame" Content="Frame" HorizontalAlignment="Center" Height="400" Margin="0,50,0,0" VerticalAlignment="Top" Width="400" Navigated="Frame_OnNavigated"/>
+        </Grid>
+        <Border x:Name="OuterBorder" BorderBrush="#555555" BorderThickness="1" HorizontalAlignment="Left" Height="635" VerticalAlignment="Top" Width="500" d:IsHidden="True"/>
+
     </Grid>
 </Window>
