@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using FolderSorter.Classes.DataClasses;
 
 namespace FolderSorter.Classes
 {
@@ -31,6 +32,16 @@ namespace FolderSorter.Classes
 
                 FileSorter.SortFile(file);
             }
+        }
+
+        public void Pause()
+        {
+            _timer.Stop();
+        }
+
+        public void Resume()
+        {
+            _timer.Start();
         }
         
     }
