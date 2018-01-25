@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows;
-using System.Windows.Forms;
 using FolderSorter.Classes;
-using Application = System.Windows.Application;
 
-namespace FolderSorter
+namespace FolderSorter.Pages
 {
     /// <summary>
     /// Interaction logic for RuleCreatorPage.xaml

@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FolderSorter.Classes;
+using FolderSorter.Classes.DataClasses;
 using ButtonBase = System.Windows.Controls.Primitives.ButtonBase;
 using Cursors = System.Windows.Input.Cursors;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
@@ -30,11 +31,14 @@ namespace FolderSorter
             InitFrame();
             
             _poller = new Poller();
-
-
+            
             OpenRuleCreator();
         }
 
+        public void AddLog(MoveFileData data)
+        {
+            MoveFileLog.AddLog(data);
+        }
 
         private void Window_OnClose(object sender, EventArgs eventArgs)
         {
@@ -210,8 +214,6 @@ namespace FolderSorter
                 case "BottomRightBorder":
                     Cursor = Cursors.SizeNWSE;
                     break;
-                default:
-                    break;
             }
         }
 
@@ -243,12 +245,13 @@ namespace FolderSorter
                 // There isn't a back entry to remove the first time frame is navigated
             }
         }
-#endregion
+        #endregion
 
-        private void OpenRuleCreator()
+        #region Rule Creator
+        public void OpenRuleCreator()
         {
             RuleCreatorGrid.Visibility = Visibility.Visible;
-            RuleCreatorFrame.Navigate(new RuleCreatorPage());
+            RuleCreatorFrame.Navigate(new Pages.RuleCreatorPage());
         }
 
         public void CloseRuleCreator()
@@ -256,6 +259,31 @@ namespace FolderSorter
             RuleCreatorGrid.Visibility = Visibility.Hidden;
             RuleCreatorFrame.Content = null;
         }
+        #endregion
+
+        #region Poller
+        private void PausePoller()
+        {
+            _poller.Pause();
+        }
+
+        private void ResumePoller()
+        {
+            _poller.Resume();
+        }
+        #endregion
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void OpenRulesList()
+        {
+            Show();
+            // TODO: RulesList
+        }
+        
         
     }
 }

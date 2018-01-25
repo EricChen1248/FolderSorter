@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="FolderSorter.FileLog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             Height="40" 
+             d:DesignWidth="400"
+             Background="#FF2D2D2D"
+             Margin="5,5,5,5"
+             >
+    <UserControl.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF3D3D3D"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Image x:Name="FileImage" HorizontalAlignment="Left" Height="30" Margin="5,0,0,0" Width="30"/>
+        <Label x:Name="FileNameLabel" Content="FileLog.log" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style"/>
+        <Label x:Name="FileLocationLabel" Content="D:Downloads/Location" HorizontalAlignment="Stretch" Margin="40,0,152.193,0" VerticalAlignment="Bottom" Foreground="#FFB0B0B0" FontFamily="Bookman Old Style"/>
+        <Label x:Name="FileTypeLabel" Content="FileType" HorizontalAlignment="Right" Margin="40,0,25,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" />
+        <Label x:Name="FileTimeLabel" Content="1/24/2018 10:34PM" HorizontalAlignment="Right" Margin="0,17.086,25,0" VerticalAlignment="Bottom" Foreground="#FFB0B0B0" FontFamily="Bookman Old Style"/>
+
+        <Button  HorizontalAlignment="Right" Margin="0,0,3,0" VerticalAlignment="Center" Width="20" Height="20" Style="{DynamicResource ButtonStyle1}">
+
+            <Canvas Height="20" Width="20" Margin="0,0,0,0" Background="Transparent">
+                <Path Stroke="White" StrokeThickness="1">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathGeometry.Figures>
+                                <PathFigure StartPoint="4,4">
+                                    <LineSegment Point="16,16"/>
+                                </PathFigure>
+                                <PathFigure StartPoint="16,4">
+                                    <LineSegment Point="4,16"/>
+                                </PathFigure>
+                            </PathGeometry.Figures>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+            </Canvas>
+        </Button>
+    </Grid>
+</UserControl>

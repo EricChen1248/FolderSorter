@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Media;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,19 @@ namespace FolderSorter.Classes
 
             //file is not locked
             return false;
+        }
+
+
+        public static ImageSource FileToImageConverter(string filePath)
+        {
+            using (System.Drawing.Icon sysicon = System.Drawing.Icon.ExtractAssociatedIcon(filePath))
+            {
+
+                return System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
+                                      sysicon.Handle,
+                                      System.Windows.Int32Rect.Empty,
+                                      System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+            }
         }
     }
 }

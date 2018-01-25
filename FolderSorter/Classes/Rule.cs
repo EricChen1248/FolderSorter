@@ -42,7 +42,7 @@ namespace FolderSorter.Classes
 
         internal static Rule GenerateFallBack(string destinationFolder)
         {
-            return new Rule("Fall Back", destinationFolder, null, RuleType.ExtensionType) {FallBack = true};
+            return new Rule("Other", destinationFolder, new List<string>(), RuleType.ExtensionType) {FallBack = true};
         }
         
 

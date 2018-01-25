@@ -1,9 +1,8 @@
-﻿<Page x:Class="FolderSorter.RuleCreatorPage"
+﻿<Page x:Class="FolderSorter.Pages.RuleCreatorPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:FolderSorter"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
       Height="400" 
       Width="400"
@@ -216,7 +215,7 @@
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="Resources/CloseBtn.png"/>
+                            <ImageBrush ImageSource="/FolderSorter;component/closebtn.png"/>
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Template">
@@ -232,7 +231,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="Resources/CloseBtn_Hover.png"/>
+                                    <ImageBrush ImageSource="/FolderSorter;component/Resources/CloseBtn_Hover.png"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>

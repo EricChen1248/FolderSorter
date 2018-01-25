@@ -59,12 +59,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\DataClasses\MoveFileData.cs" />
     <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\Poller.cs" />
     <Compile Include="Classes\UserFolderAPI.cs" />
-    <Compile Include="RuleCreatorPage.xaml.cs">
+    <Compile Include="FileLog.xaml.cs">
+      <DependentUpon>FileLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FileLogger.xaml.cs">
+      <DependentUpon>FileLogger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RuleCreatorPage.xaml.cs">
       <DependentUpon>RuleCreatorPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="FileLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FileLogger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,12 +95,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RuleCreatorPage.xaml">
+    <Page Include="Pages\RuleCreatorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RulesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\RulesList.xaml.cs">
+      <DependentUpon>RulesList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -123,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TrayIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="closebtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\tool.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
