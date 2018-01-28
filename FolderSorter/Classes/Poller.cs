@@ -12,7 +12,7 @@ namespace FolderSorter.Classes
     public class Poller
     {
         private DispatcherTimer _timer = new DispatcherTimer();
-
+        private bool _timerStarted = true;
         internal Poller()
         {
             _timer.Interval = TimeSpan.FromSeconds(1);
@@ -34,14 +34,31 @@ namespace FolderSorter.Classes
             }
         }
 
-        public void Pause()
+        /// <summary>
+        /// Toggled poller between pause and resume, true when resumed
+        /// </summary>
+        /// <returns>true when resumed</returns>
+        public bool ToggleResume()
         {
-            _timer.Stop();
+            if (_timerStarted)
+            {
+                Pause();
+                return false;
+            }
+            Resume();
+            return true;
         }
 
-        public void Resume()
+        private void Pause()
+        {
+            _timer.Stop();
+            _timerStarted = false;
+        }
+
+        private void Resume()
         {
             _timer.Start();
+            _timerStarted = true;
         }
         
     }
