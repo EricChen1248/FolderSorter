@@ -37,8 +37,8 @@ namespace FolderSorter.Classes
         private static ContextMenu GenerateContextMenu()
         {
             var contextMenu = new ContextMenu();
-            contextMenu.MenuItems.Add("Exit", (s, e) => MainWindow.Close());
             contextMenu.MenuItems.Add("Edit Rules", (s, e) => MainWindow.OpenRulesList());
+            contextMenu.MenuItems.Add("Exit", (s, e) => MainWindow.Close());
             return contextMenu;
         }
 
