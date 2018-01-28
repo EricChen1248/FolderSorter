@@ -63,20 +63,20 @@
     <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\Poller.cs" />
     <Compile Include="Classes\UserFolderAPI.cs" />
-    <Compile Include="FileLog.xaml.cs">
+    <Compile Include="User Controls\FileLog.xaml.cs">
       <DependentUpon>FileLog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FileLogger.xaml.cs">
+    <Compile Include="User Controls\FileLogger.xaml.cs">
       <DependentUpon>FileLogger.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RuleCreatorPage.xaml.cs">
       <DependentUpon>RuleCreatorPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="FileLog.xaml">
+    <Page Include="User Controls\FileLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FileLogger.xaml">
+    <Page Include="User Controls\FileLogger.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,7 +13,7 @@ namespace FolderSorter.Classes
     {
         internal string Name;
         internal string DestinationFolder;
-        internal List<string> Data;
+        internal List<string> Data = new List<string>();
         internal RuleType Type;
         internal bool FallBack;
 

@@ -6,9 +6,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FolderSorter.Classes;
 using FolderSorter.Classes.DataClasses;
-using ButtonBase = System.Windows.Controls.Primitives.ButtonBase;
-using Cursors = System.Windows.Input.Cursors;
-using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using System.Windows.Controls.Primitives;
 
 namespace FolderSorter
 {
@@ -260,30 +258,26 @@ namespace FolderSorter
             RuleCreatorFrame.Content = null;
         }
         #endregion
-
-        #region Poller
-        private void PausePoller()
-        {
-            _poller.Pause();
-        }
-
-        private void ResumePoller()
-        {
-            _poller.Resume();
-        }
-        #endregion
-
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         public void OpenRulesList()
         {
             Show();
             // TODO: RulesList
         }
-        
-        
+
+        private void RulesButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenRulesList();
+        }
+
+        private void PauseButton_Click(object sender, RoutedEventArgs e)
+        {
+            PauseButton.Content = _poller.ToggleResume() ? "Pause Sorting" : "Resume Sorting";
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
