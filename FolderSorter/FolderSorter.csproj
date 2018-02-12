@@ -72,6 +72,9 @@
     <Compile Include="Pages\RuleCreatorPage.xaml.cs">
       <DependentUpon>RuleCreatorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\RuleLog.xaml.cs">
+      <DependentUpon>RuleLog.xaml</DependentUpon>
+    </Compile>
     <Page Include="User Controls\FileLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RulesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\RuleLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

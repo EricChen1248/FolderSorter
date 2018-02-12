@@ -18,11 +18,17 @@ namespace FolderSorter.User_Controls
             var fullPath = data.Destination + "\\" + data.FileName;
             try
             {
-                var destination =
-                    MainWindow.DownloadPath.Split(new[] {'\\'}, StringSplitOptions.RemoveEmptyEntries).Last() + "\\" +
-                    data.Destination.TrimStart(MainWindow.DownloadPath.ToCharArray());
+                
+                var destination = data.Destination.Split('\\');
+                var destinationString = "";
+                var i = destination.Length;
+                while (destinationString.Length < 20)
+                {
+                    destinationString = destination[--i] + "\\" + destinationString;
+                }
+                
                 FileNameLabel.Content = data.FileName;
-                FileLocationLabel.Content = @"...\" + destination;
+                FileLocationLabel.Content = @"...\" + destinationString;
                 FileTypeLabel.Content = data.FileType;
                 FileTimeLabel.Content = data.Time.ToLocalTime();
                 FileImage.Source = Helper.FileToImageConverter(data.Destination + "\\" + data.FileName);

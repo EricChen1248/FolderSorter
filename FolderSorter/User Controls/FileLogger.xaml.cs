@@ -15,7 +15,7 @@ namespace FolderSorter.User_Controls
 
         public void AddLog(MoveFileData data)
         {
-            var entry = new User_Controls.FileLog(data);
+            var entry = new FileLog(data);
             StackPanel.Children.Add(entry);
         }
     }

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FolderSorter"
-        xmlns:userControls="clr-namespace:FolderSorter.User_Controls"
+        xmlns:local1="clr-namespace:FolderSorter.User_Controls"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="635" 
@@ -140,7 +140,7 @@
             <Frame x:Name="RuleCreatorFrame" Content="Frame" HorizontalAlignment="Center" Height="400" Margin="0,50,0,0" VerticalAlignment="Top" Width="400" Navigated="Frame_OnNavigated"/>
         </Grid>
         <Border x:Name="OuterBorder" BorderBrush="#555555" BorderThickness="1" HorizontalAlignment="Left" Height="635" VerticalAlignment="Top" Width="500" d:IsHidden="True"/>
-        <userControls:FileLogger x:Name="MoveFileLog" HorizontalAlignment="Center" Height="400" Margin="25,185,25,0" VerticalAlignment="Top" Width="450"/>
+        <local1:FileLogger x:Name="MoveFileLog" HorizontalAlignment="Center" Height="400" Margin="25,185,25,0" VerticalAlignment="Top" Width="450"/>
         <Button  HorizontalAlignment="Right" Margin="0,45,15,0" VerticalAlignment="Top" Width="35.038" Height="35.038" Style="{DynamicResource ButtonStyle1}">
             <Button.Triggers>
                 <EventTrigger RoutedEvent="Button.Click" >
@@ -166,21 +166,21 @@
                     <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="Foreground" Value="#EEEEEE"/>
                     <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#FF202020">
                             </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
 
             </StackPanel.Resources>
             <StackPanel.Triggers>
@@ -203,6 +203,5 @@
             <Button x:Name="PauseButton" Content="Pause Sorting" VerticalAlignment="Top" Height="23" FontFamily="Bookman Old Style" Click="PauseButton_Click"/>
             <Button x:Name="ExitButton" Content="Exit" VerticalAlignment="Top" Height="23" FontFamily="Bookman Old Style" Click="ExitButton_Click"/>
         </StackPanel>
-
     </Grid>
 </Window>

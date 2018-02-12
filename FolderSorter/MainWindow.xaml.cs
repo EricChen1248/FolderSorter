@@ -7,6 +7,8 @@ using System.Windows.Shapes;
 using FolderSorter.Classes;
 using FolderSorter.Classes.DataClasses;
 using System.Windows.Controls.Primitives;
+using FolderSorter.Pages;
+using FolderSorter.User_Controls;
 
 namespace FolderSorter
 {
@@ -29,8 +31,6 @@ namespace FolderSorter
             InitFrame();
             
             _poller = new Poller();
-            
-            OpenRuleCreator();
         }
 
         public void AddLog(MoveFileData data)
@@ -244,27 +244,24 @@ namespace FolderSorter
             }
         }
         #endregion
-
-        #region Rule Creator
-        public void OpenRuleCreator()
-        {
-            RuleCreatorGrid.Visibility = Visibility.Visible;
-            RuleCreatorFrame.Navigate(new Pages.RuleCreatorPage());
-        }
-
-        public void CloseRuleCreator()
-        {
-            RuleCreatorGrid.Visibility = Visibility.Hidden;
-            RuleCreatorFrame.Content = null;
-        }
-        #endregion
         
         public void OpenRulesList()
         {
             Show();
-            // TODO: RulesList
+            NewFloatingFrame(new RulesList());
         }
 
+        public void NewFloatingFrame(Page page)
+        {
+            RuleCreatorGrid.Visibility = Visibility.Visible;
+            RuleCreatorFrame.Navigate(page);
+        }
+
+        public void CloseFloatingFrame()
+        {
+            RuleCreatorGrid.Visibility = Visibility.Hidden;
+            RuleCreatorFrame.Content = null;
+        }
         private void RulesButton_Click(object sender, RoutedEventArgs e)
         {
             OpenRulesList();

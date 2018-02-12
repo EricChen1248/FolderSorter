@@ -1,16 +1,13 @@
-﻿using System;
+﻿using FolderSorter.Classes.DataClasses;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FolderSorter.Classes.DataClasses;
 
 namespace FolderSorter.Classes
 {
     internal static class FileSorter
     {
-        private static List<Rule> rules = new List<Rule>();
+        internal static List<Rule> rules = new List<Rule>();
         private static Rule FallBackRule;
 
          static FileSorter()

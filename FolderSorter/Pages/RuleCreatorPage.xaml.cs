@@ -13,6 +13,11 @@ namespace FolderSorter.Pages
     public partial class RuleCreatorPage
     {
         private readonly Dictionary<string, RuleType> _ruleTypeDictionary = new Dictionary<string, RuleType>();
+
+        public RuleCreatorPage(Rule rule) : this()
+        {
+            
+        }
         public RuleCreatorPage()
         {
             InitializeComponent();
@@ -50,7 +55,7 @@ namespace FolderSorter.Pages
 
         private void CloseBtn_OnClick(object sender, RoutedEventArgs e)
         {
-            MainWindow.Instance.CloseRuleCreator();
+            MainWindow.Instance.CloseFloatingFrame();
         }
     }
 }

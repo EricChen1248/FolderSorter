@@ -9,7 +9,7 @@ using System.Windows.Navigation;
 
 namespace FolderSorter.Classes
 {
-    internal class Rule
+    public class Rule
     {
         internal string Name;
         internal string DestinationFolder;
