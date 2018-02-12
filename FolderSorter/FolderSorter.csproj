@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiteDB, Version=4.1.1.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.4.1.1\lib\net40\LiteDB.dll</HintPath>
+    </Reference>
     <Reference Include="Ookii.Dialogs.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0c15020868fd6249, processorArchitecture=MSIL">
       <HintPath>..\packages\Ookii.Dialogs.1.0\lib\net35\Ookii.Dialogs.Wpf.dll</HintPath>
     </Reference>
@@ -60,9 +63,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\DataClasses\MoveFileData.cs" />
+    <Compile Include="Classes\DataClasses\Rule.cs" />
+    <Compile Include="Classes\Exceptions.cs" />
     <Compile Include="Classes\Helper.cs" />
+    <Compile Include="Classes\MoveNotifier.cs" />
     <Compile Include="Classes\Poller.cs" />
+    <Compile Include="Classes\Server.cs" />
+    <Compile Include="Classes\TimedDispatcher.cs" />
     <Compile Include="Classes\UserFolderAPI.cs" />
+    <Compile Include="MoveLogNotifier.xaml.cs">
+      <DependentUpon>MoveLogNotifier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User Controls\FileLog.xaml.cs">
       <DependentUpon>FileLog.xaml</DependentUpon>
     </Compile>
@@ -75,6 +86,10 @@
     <Compile Include="User Controls\RuleLog.xaml.cs">
       <DependentUpon>RuleLog.xaml</DependentUpon>
     </Compile>
+    <Page Include="MoveLogNotifier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User Controls\FileLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,7 +107,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\IconCreator.cs" />
-    <Compile Include="Classes\Rule.cs" />
     <Compile Include="Classes\FileSorter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -158,6 +172,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-folder-96.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

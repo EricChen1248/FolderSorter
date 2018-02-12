@@ -43,6 +43,40 @@
         </Button>
 
         <StackPanel x:Name="Logger" HorizontalAlignment="Stretch" Height="263.248" Margin="10,69.941,10,0" VerticalAlignment="Top" />
+        <Button Grid.Row="0" x:Name="NewRuleBtn" HorizontalAlignment="Right" Height="20" Width="20" BorderBrush="{x:Null}" Foreground="{x:Null}" Click ="NewRuleBtn_Click" VerticalAlignment="Top" Margin="0,38.623,10,0" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#333333"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#444444"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Path 
+                      x:Name="Arrow"   
+                      Fill="White"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch" 
+                      Margin="2,2,2,2"
+                      StrokeThickness="1"
+                      Stroke="White"
+                      Data=" M4,0 L4,8 M0,4 L8,4" 
+                />
+        </Button>
+        <Label Content="Rules:" Margin="18,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="50" FontFamily="Bookman Old Style" FontSize="14"/>
+        <Label Content="Fallback:" Margin="18,0,0,50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Width="100" FontFamily="Bookman Old Style" FontSize="14"/>
+        <StackPanel x:Name="FallBackLogger" HorizontalAlignment="Stretch" Height="50" Margin="10,0,10,00" VerticalAlignment="Bottom" />
 
     </Grid>
 </Page>

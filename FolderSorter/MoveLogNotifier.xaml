@@ -1,0 +1,56 @@
+﻿<Window x:Class="FolderSorter.MoveLogNotifier"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FolderSorter"
+        mc:Ignorable="d"
+        Title="MoveLogNotifier" 
+        Height="100" 
+        Width="200"
+        Background="#202020"
+        WindowStyle="None"
+        MouseEnter="Window_MouseEnter"
+        ShowInTaskbar="False"
+        Topmost="True">
+    <Grid>
+        <Image x:Name="FileIconImage" HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="40"/>
+        <Label x:Name="FileName" Content="Filename" HorizontalAlignment="Left" Margin="55,8,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" Width="127.755"/>
+        <Button Grid.Row="0" x:Name="DeleteRuleBtn" HorizontalAlignment="Right" Height="15.472" Width="15.17" BorderBrush="{x:Null}" Foreground="{x:Null}" Click ="CloseBtn_Click" VerticalAlignment="Top" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#444444"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Path 
+                x:Name="Cross" 
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" 
+                Margin="1,1,1,1"
+                StrokeThickness="2"
+                Stroke="White"
+                Data=" M0,0 L10,10 M0,10 L10,0" 
+                />
+        </Button>
+        <Label x:Name="FileType" Content="Type" HorizontalAlignment="Left" Margin="55,30.913,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" Width="127.755"/>
+        <Label x:Name="Destination" Content="./Destination" HorizontalAlignment="Left" Margin="38.755,59.841,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" Width="147.019"/>
+        <Button Margin="8,53,150.642,3"  Background="Transparent" BorderBrush="Transparent" Padding="0,0,0,0" Click="OpenFolder_Click">
+            <Image Source="icons8-folder-96.png" Stretch="Fill"/>
+        </Button>
+
+    </Grid>
+</Window>

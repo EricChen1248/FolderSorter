@@ -2,29 +2,45 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
 
 namespace FolderSorter.Classes
 {
     public class Rule
     {
-        internal string Name;
-        internal string DestinationFolder;
-        internal List<string> Data = new List<string>();
-        internal RuleType Type;
-        internal bool FallBack;
+        public int _id { get; set; }
+        public string Name { get; set; }
+        public string DestinationFolder { get; set; }
+        public List<string> Data { get; set; }
+        public int Order { get; set; }
+        public RuleType Type;
+
+        public int type
+        {
+            get => (int) Type;
+            set => Type = (RuleType) Enum.ToObject(typeof(RuleType), value);
+        }
+
+        public bool FallBack { get; set; }
 
         private HashSet<string> _extensionList;
 
-        internal Rule(string name, string destinationFolder, List<string> data, RuleType type)
+        public Rule()
+        {
+            
+        }
+        
+        public Rule(string name, string destinationFolder, List<string> data, RuleType type)
         {
             Name = name;
             DestinationFolder = destinationFolder;
             Type = type;
-            switch (type)
+            UpdateData(data);
+        }
+
+        internal void UpdateData(List<string> data)
+        {
+            Data = data;
+            switch (Type)
             {
                 case RuleType.FileNameContains:
                     break;
@@ -36,7 +52,7 @@ namespace FolderSorter.Classes
                     }
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -66,6 +82,15 @@ namespace FolderSorter.Classes
                     return false;
                 case RuleType.ExtensionType:
                     var extension = Path.GetExtension(file)?.ToLower();
+                    
+                    if (_extensionList == null)
+                    {
+                        _extensionList = new HashSet<string>();
+                        foreach (var ext in Data)
+                        {
+                            _extensionList.Add(ext);
+                        }
+                    }
                     if (extension != null && _extensionList.Contains(extension))
                     {
                         return true;
@@ -76,9 +101,19 @@ namespace FolderSorter.Classes
             }
         }
 
+        internal void ChangeName(string newName)
+        {
+            Name = newName;
+        }
+
+        internal void MoveLocation(string location)
+        {
+            DestinationFolder = location;
+        }
+
     }
 
-    internal enum RuleType
+    public enum RuleType
     {
         [Description("File Name Contains:")]
         FileNameContains,

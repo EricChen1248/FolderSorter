@@ -8,7 +8,7 @@
              d:DesignWidth="400"
              Background="#FF2D2D2D"
              Margin="5,5,5,5"
-             >
+             MouseDoubleClick="FileLog_OnMouseDoubleClick">
     <UserControl.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -47,7 +47,7 @@
         <Label x:Name="FileTypeLabel" Content="FileType" HorizontalAlignment="Right" Margin="40,0,25,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bookman Old Style" />
         <Label x:Name="FileTimeLabel" Content="1/24/2018 10:34PM" HorizontalAlignment="Right" Margin="0,17.086,25,0" VerticalAlignment="Bottom" Foreground="#FFB0B0B0" FontFamily="Bookman Old Style"/>
 
-        <Button  HorizontalAlignment="Right" Margin="0,0,3,0" VerticalAlignment="Center" Width="20" Height="20" Style="{DynamicResource ButtonStyle1}">
+        <Button  HorizontalAlignment="Right" Margin="0,0,3,0" VerticalAlignment="Center" Width="20" Height="20" Style="{DynamicResource ButtonStyle1}" Click="RemoveLogBtn_Click">
 
             <Canvas Height="20" Width="20" Margin="0,0,0,0" Background="Transparent">
                 <Path Stroke="White" StrokeThickness="1">

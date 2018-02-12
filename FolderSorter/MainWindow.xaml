@@ -136,9 +136,6 @@
             </Button.Style>
         </Button>
         <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Stretch" Margin="0,35,0,0" VerticalAlignment="Stretch" Navigated="Frame_OnNavigated"/>
-        <Grid x:Name="RuleCreatorGrid" Visibility="Hidden" HorizontalAlignment="Stretch" Margin="0,35,0,0" VerticalAlignment="Stretch" Background="#14FFFFFF" >
-            <Frame x:Name="RuleCreatorFrame" Content="Frame" HorizontalAlignment="Center" Height="400" Margin="0,50,0,0" VerticalAlignment="Top" Width="400" Navigated="Frame_OnNavigated"/>
-        </Grid>
         <Border x:Name="OuterBorder" BorderBrush="#555555" BorderThickness="1" HorizontalAlignment="Left" Height="635" VerticalAlignment="Top" Width="500" d:IsHidden="True"/>
         <local1:FileLogger x:Name="MoveFileLog" HorizontalAlignment="Center" Height="400" Margin="25,185,25,0" VerticalAlignment="Top" Width="450"/>
         <Button  HorizontalAlignment="Right" Margin="0,45,15,0" VerticalAlignment="Top" Width="35.038" Height="35.038" Style="{DynamicResource ButtonStyle1}">
@@ -153,13 +150,17 @@
                             <DoubleAnimation 
                                 Storyboard.TargetName="SettingStackPanel"
                                 Storyboard.TargetProperty="Height"
-                                To="69" Duration="0:0:0.08"/>
+                                To="92" Duration="0:0:0.08"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
             </Button.Triggers>
             <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="Resources/tool.png"/>
         </Button>
+         <Grid x:Name="RuleCreatorGrid" Visibility="Hidden" HorizontalAlignment="Stretch" Margin="0,35,0,0" VerticalAlignment="Stretch" Background="#14FFFFFF" >
+            <Frame x:Name="RuleCreatorFrame" Content="Frame" HorizontalAlignment="Center" Height="400" Margin="0,50,0,0" VerticalAlignment="Top" Width="400" Navigated="Frame_OnNavigated"/>
+        </Grid>
+        
         <StackPanel x:Name="SettingStackPanel" Width="0" Height="0" Margin="0,45,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Black">
             <StackPanel.Resources>
                 <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}">
@@ -200,6 +201,7 @@
                 </EventTrigger>
             </StackPanel.Triggers>
             <Button x:Name="RulesButton" Content="View Rules" VerticalAlignment="Top" Height="23" FontFamily="Bookman Old Style" Click="RulesButton_Click"/>
+            <Button x:Name="ClearButton" Content="Clear Logs" VerticalAlignment="Top" Height="23" FontFamily="Bookman Old Style" Click="ClearButton_Click"/>
             <Button x:Name="PauseButton" Content="Pause Sorting" VerticalAlignment="Top" Height="23" FontFamily="Bookman Old Style" Click="PauseButton_Click"/>
             <Button x:Name="ExitButton" Content="Exit" VerticalAlignment="Top" Height="23" FontFamily="Bookman Old Style" Click="ExitButton_Click"/>
         </StackPanel>

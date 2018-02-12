@@ -1,24 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FolderSorter.Classes.DataClasses
 {
     public class MoveFileData
     {
-        public string FileName { get; }
-        public string FileType { get; }
-        public string Destination { get; }
-        public DateTime Time { get; }
+        public int _id { get; set; }
+        public string FileName { get; set; }
+        public string FileType { get; set;  }
+        public string Destination { get; set;  }
+        public string Time { get; }
 
-        public MoveFileData(string fileName, string fileType, string destination, DateTime time)
+        public MoveFileData()
+        {
+            
+        }
+        public MoveFileData(string fileName, string fileType, string destination)
         {
             FileName = fileName;
             FileType = fileType;
             Destination = destination;
-            Time = time;
+            Time = DateTime.UtcNow.ToLongTimeString();
+        }
+
+        public bool Equals(MoveFileData other)
+        {
+            return other.FileName == FileName && other.Destination == Destination && other.Time == Time && other.FileType == FileType;
         }
     }
 }

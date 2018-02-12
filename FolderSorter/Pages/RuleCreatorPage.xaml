@@ -164,7 +164,7 @@
         <Label Content="Sort on:" HorizontalAlignment="Center" Margin="33.321,69.866,286.225,0"  VerticalAlignment="Top" Width="80.454" Foreground="#EEEEEE" FontSize="14"/>
         <Label Content="Rule Type:" HorizontalAlignment="Center" Margin="205,11.38,114.546,0"  VerticalAlignment="Top" Width="80.454" Foreground="#EEEEEE" FontSize="14"/>
         <TextBox x:Name="SortBox" Height="179.894" Margin="33.321,98.486,33.321,0" Padding="3,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333.358" VerticalContentAlignment="Top" FontSize="16" Background="#FF4F4F4F" Foreground="#FFEEEEEE" BorderBrush="#AAAAAA" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
-        <Button x:Name="CreateButton" Content="Create" Margin="33.321,357,33.321,0" VerticalAlignment="Top" Height="23" Foreground="#EEEEEE" FontFamily="Bookman Old Style">
+        <Button x:Name="CreateButton" Content="Create" Margin="33.321,357,33.321,0" VerticalAlignment="Top" Height="23" Foreground="#EEEEEE" FontFamily="Bookman Old Style" Click="CreateButton_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF4F4F4F"/>

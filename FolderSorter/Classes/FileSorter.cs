@@ -1,23 +1,27 @@
 ﻿using FolderSorter.Classes.DataClasses;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace FolderSorter.Classes
 {
     internal static class FileSorter
     {
         internal static List<Rule> rules = new List<Rule>();
-        private static Rule FallBackRule;
-
-         static FileSorter()
+        internal static Rule FallBackRule;
+        
+        
+        public static void Init()
         {
-            // TODO:Load in rules from database
-            var data = new List<string> {".ai"};
-            rules.Add(new Rule("Images", @"D:\Users\Eric\Downloads\Images", data, RuleType.ExtensionType));
-            data = new List<string> {".zip", ".rar", ".7z", ".tar.gz"};
-            rules.Add(new Rule("Compressed", @"D:\Users\Eric\Downloads\Compressed", data, RuleType.ExtensionType));
-            FallBackRule = Rule.GenerateFallBack(@"D:\Users\Eric\Downloads\Other");
+            var rulesList = Server.GetRules();
+            foreach (var rule in rulesList)
+            {
+                rules.Add(rule);
+            }
+
+            FallBackRule = Server.GetFallBack() ?? Rule.GenerateFallBack(Path.Combine(UserFolderAPI.GetPath(KnownFolder.Downloads), @"Other"));
         }
         
         public static void RegenRules()
@@ -37,28 +41,57 @@ namespace FolderSorter.Classes
             return FallBackRule;
         }
 
+        public static void AddRule(Rule rule)
+        {
+            rules.Add(rule);
+            UpdateServer();
+        }
+
+        public static void DeleteRule(Rule rule)
+        {
+            rules.Remove(rule);
+            UpdateServer();
+        }
+        
         public static void SortFile(FileInfo file)
         {
+            Rule rule = null;
             try
             {
                 if (file.Exists == false)
                 {
                     return;
                 }
-                var rule = FindRule(file.Name);
-                var fileName = GenerateFileName(Path.GetFileName(file.Name));
-                File.Move(file.FullName, Path.Combine(rule.DestinationFolder, fileName ?? throw new InvalidOperationException()));
 
-                var data = new MoveFileData(file.Name, rule.Name, rule.DestinationFolder, DateTime.UtcNow);
+                rule = FindRule(file.Name);
+                var fileName = GenerateFileName(Path.GetFileName(file.Name));
+                File.Move(file.FullName,
+                    Path.Combine(rule.DestinationFolder, fileName ?? throw new InvalidOperationException()));
+
+                var data = new MoveFileData(file.Name, rule.Name, rule.DestinationFolder);
                 MainWindow.Instance.AddLog(data);
-                // TODO: Add notification and log
+                Server.AddLog(data);
+                MoveNotifier.Add(data);
+
+                // TODO: Add notification
             }
-            catch (Exception)
+            catch (DirectoryNotFoundException)
             {
+                Directory.CreateDirectory(rule?.DestinationFolder ?? throw new InvalidOperationException());
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
                 // TODO: Add error handling for file moving
+                
             }
         }
 
+        public static void UpdateRules()
+        {
+            Server.UpdateRule(rules, FallBackRule);
+        }
+        
         private static string GenerateFileName(string fullFilePath)
         {
             var count = 0;
@@ -71,6 +104,12 @@ namespace FolderSorter.Classes
             }
 
             return returnFile;
+        }
+
+        private static void UpdateServer()
+        {
+            rules = rules.OrderBy(r => r.Order).ToList();
+            Server.UpdateRule(rules, FallBackRule);
         }
     }
 }

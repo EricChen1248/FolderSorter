@@ -8,7 +8,6 @@ using FolderSorter.Classes;
 using FolderSorter.Classes.DataClasses;
 using System.Windows.Controls.Primitives;
 using FolderSorter.Pages;
-using FolderSorter.User_Controls;
 
 namespace FolderSorter
 {
@@ -29,6 +28,7 @@ namespace FolderSorter
             
             InitTitleBar();
             InitFrame();
+            FileSorter.Init();
             
             _poller = new Poller();
         }
@@ -275,6 +275,11 @@ namespace FolderSorter
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            MoveFileLog.ClearLogs();
         }
     }
 }

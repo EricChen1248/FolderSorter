@@ -16,11 +16,18 @@ namespace FolderSorter.Pages
             {
                 Logger.Children.Add(new RuleLog(rule));
             }
+
+            FallBackLogger.Children.Add(new RuleLog(FileSorter.FallBackRule));
         }
 
         private void CloseBtn_OnClick(object sender, RoutedEventArgs e)
         {
             MainWindow.Instance.CloseFloatingFrame();
+        }
+
+        private void NewRuleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.NewFloatingFrame(new RuleCreatorPage());
         }
     }
 }
